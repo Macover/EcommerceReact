@@ -7,7 +7,7 @@ export function Products({ listOfProducts }) {
     return (
         <>
             <section>
-                <h2>List of products</h2>
+                <h2 className="products__title">List of products</h2>
                 <div className="products__container">
                     {
                         listOfProducts.map(product => {
