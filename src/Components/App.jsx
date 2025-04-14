@@ -7,6 +7,9 @@ const PRODUCTS_URL = 'https://dummyjson.com/products';
 function App() {
 
     const [listOfProducts, setListOfProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [categoryInput, setCategoryInput] = useState('');
+    const [priceInput, setPriceInput] = useState('');
 
     useEffect(() => {
 
@@ -15,6 +18,22 @@ function App() {
             .then(response => setListOfProducts(response.products));
     }, []);
 
+    useEffect(() => {
+
+        const newProducts = listOfProducts.filter(product => product.category.includes(categoryInput))
+        setFilteredProducts(newProducts)
+
+    }, [categoryInput])
+
+    console.log(filteredProducts.length)
+
+    useEffect(() => {
+
+    }, [priceInput])
+
+    const handleCategoryInput = (e) => setCategoryInput(e.target.value);
+    const handlePriceInput = (e) => setPriceInput(e.target.value);
+
     return (
         <main>
             <header>
@@ -22,7 +41,9 @@ function App() {
             </header>
 
             <Products
-                listOfProducts={listOfProducts}
+                handleCategoryInput={handleCategoryInput}
+                handlePriceInput={handlePriceInput}
+                listOfProducts={filteredProducts.length === 0 ? listOfProducts : filteredProducts}
             />
         </main>
     )
