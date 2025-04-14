@@ -20,14 +20,34 @@ function App() {
 
     useEffect(() => {
 
-        const newProducts = listOfProducts.filter(product => product.category.includes(categoryInput))
-        setFilteredProducts(newProducts)
+        if (filteredProducts.length === 0) {
+            const newProducts = listOfProducts.filter(product => product.category.includes(categoryInput))
+            setFilteredProducts(newProducts)
+        } else if(filteredProducts.length !== 0){
+            const newProducts = listOfProducts.filter(product => product.price.toString().includes(priceInput))
+            setFilteredProducts(newProducts.filter(product => product.category.includes(categoryInput)))
+        }
+         else {
+            const newProducts = filteredProducts.filter(product => product.category.includes(categoryInput))
+            setFilteredProducts(newProducts)
+        }
 
     }, [categoryInput])
 
-    console.log(filteredProducts.length)
-
     useEffect(() => {
+
+        if (filteredProducts.length === 0) {
+            const newProducts = listOfProducts.filter(product => product.price.toString().includes(priceInput))
+            setFilteredProducts(newProducts)
+        } else if(filteredProducts.length !== 0){
+            const newProducts = listOfProducts.filter(product => product.category.includes(categoryInput))
+            setFilteredProducts(newProducts.filter(product => product.price.toString().includes(priceInput)))
+        }
+        else {
+            const newProducts = filteredProducts.filter(product => product.price.toString().includes(priceInput))
+            setFilteredProducts(newProducts)
+        }
+
 
     }, [priceInput])
 
