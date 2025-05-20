@@ -2,18 +2,14 @@ import React from "react"
 import './CSS/Products.css';
 import { ProductsHeader } from "./ProductsHeader";
 
-export function Products({ categoryInput, priceInput, listOfProducts, handleCategoryInput, handlePriceInput }) {
-
+export function Products({ setFilter, listOfProducts }) {
 
     return (
         <>
             <section>
                 <ProductsHeader
-                    categoryInput={categoryInput}
-                    priceInput={priceInput}
+                    setFilter={setFilter}
                     listOfProductsLength={listOfProducts.length}
-                    handleCategoryInput={handleCategoryInput}
-                    handlePriceInput={handlePriceInput}
                 />
                 <div className="products__container">
                     {

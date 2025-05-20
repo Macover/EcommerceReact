@@ -20,19 +20,13 @@ function App() {
             .then(res => res.json())
             .then(response => {
                 setListOfProducts(response.products);
-                setLoading(false);                
+                setLoading(false);
             });
     }, []);
 
-    console.log('loading', loading)
-
-
     useEffect(() => {
-
-        const filteredProductsA = filterProducts(listOfProducts)
-        setFilteredProducts(filterProducts(listOfProducts))
-        console.log('listOfProducts', listOfProducts)
-        console.log('filteredProductsA', filteredProductsA)        
+        
+        setFilteredProducts(filterProducts(listOfProducts))        
 
     }, [filters, loading]);
 
@@ -49,24 +43,6 @@ function App() {
 
     }
 
-
-    const handleCategoryInput = (e) => {
-        setFilter(filter => {
-            return {
-                'Category': e.target.value,
-                'Price': filter.Price
-            }
-        })
-    }
-    const handlePriceInput = (e) => {
-        setFilter(filter => {
-            return {
-                'Category': filter.Category,
-                'Price': e.target.value
-            }
-        })
-    };
-
     return (
         <main>
             <header>
@@ -74,9 +50,7 @@ function App() {
             </header>
 
             <Products
-                priceInput={filters.Price}
-                handleCategoryInput={handleCategoryInput}
-                handlePriceInput={handlePriceInput}
+                setFilter = {setFilter}
                 listOfProducts={loading ? [] : filteredProducts}
             />
         </main>
