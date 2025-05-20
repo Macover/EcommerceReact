@@ -1,47 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Products } from './Products';
+import useFilters from '../Logic/useFilters';
 import './CSS/App.css'
-
-const PRODUCTS_URL = 'https://dummyjson.com/products';
 
 function App() {
 
-    const [listOfProducts, setListOfProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const [filters, setFilter] = useState({
-        'Category': 'All',
-        'Price': 50
-    });
-
-    useEffect(() => {
-        fetch(PRODUCTS_URL)
-            .then(res => res.json())
-            .then(response => {
-                setListOfProducts(response.products);
-                setLoading(false);
-            });
-    }, []);
-
-    useEffect(() => {
-        
-        setFilteredProducts(filterProducts(listOfProducts))        
-
-    }, [filters, loading]);
-
-
-    function filterProducts(products) {
-
-        return products.filter(product => {
-            return product.price <= filters.Price
-                && (
-                    filters.Category === 'All' ||
-                    product.category === filters.Category
-                )
-        })
-
-    }
+    const { loading, filteredProducts, setFilter } = useFilters();
 
     return (
         <main>
@@ -50,7 +14,7 @@ function App() {
             </header>
 
             <Products
-                setFilter = {setFilter}
+                setFilter={setFilter}
                 listOfProducts={loading ? [] : filteredProducts}
             />
         </main>
