@@ -13,8 +13,7 @@ function App() {
                 <h1>React Ecommerce App</h1>
             </header>
 
-            <Products
-                setFilter={setFilter}
+            <Products                
                 listOfProducts={loading ? [] : filteredProducts}
             />
         </main>

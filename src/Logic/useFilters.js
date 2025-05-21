@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { FiltersContext } from '../Context/filtersContext';
 
 const PRODUCTS_URL = 'https://dummyjson.com/products';
 
 export default function useFilters() {
+
     const [loading, setLoading] = useState(true);
     const [listOfProducts, setListOfProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
-    const [filters, setFilter] = useState({
-        'Category': 'All',
-        'Price': 0
-    });
+    const { filters, setFilter } = useContext(FiltersContext)
 
     useEffect(() => {
         fetch(PRODUCTS_URL)
@@ -22,10 +21,12 @@ export default function useFilters() {
     }, []);
 
     useEffect(() => {
-
         setFilteredProducts(filterProducts(listOfProducts))
-
     }, [filters, loading]);
+
+    console.log('filteredProducts', filterProducts(listOfProducts))
+
+    // filterProducts(listOfProducts)
 
     function filterProducts(products) {
 
@@ -35,6 +36,10 @@ export default function useFilters() {
                     filters.Category === 'All' ||
                     product.category === filters.Category
                 )
+            /* return (
+                filters.Category === 'All' ||
+                product.category === filters.Category
+            ) */
         })
 
     }

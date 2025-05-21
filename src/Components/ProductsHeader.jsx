@@ -1,12 +1,13 @@
-import React, { useId, useState } from "react";
+import React, { useContext, useId } from "react";
+import { FiltersContext } from "../Context/filtersContext";
 
 
-export function ProductsHeader({ setFilter, listOfProductsLength }) {
+
+export function ProductsHeader({ listOfProductsLength }) {
 
     const priceId = useId();
 
-    const [maxPrice, setMaxPrice] = useState(0);
-
+    const { filters, setFilter } = useContext(FiltersContext)
 
     const handleCategoryInput = (e) => {
         setFilter(filter => {
@@ -17,7 +18,6 @@ export function ProductsHeader({ setFilter, listOfProductsLength }) {
         })
     }
     const handlePriceInput = (e) => {
-        setMaxPrice(e.target.value);
         setFilter(filter => {
             return {
                 'Category': filter.Category,
@@ -40,9 +40,9 @@ export function ProductsHeader({ setFilter, listOfProductsLength }) {
                     <option value="fragrances">fragrances</option>
                 </select>
 
-                <input id={priceId} min={0} max={100} value={maxPrice}
+                <input id={priceId} min={0} max={100} value={filters.Price}
                     onChange={(e) => handlePriceInput(e)} type="range" />
-                <label htmlFor={priceId}>Max price: ${maxPrice}</label>
+                <label htmlFor={priceId}>Max price: ${filters.Price}</label>
             </header>
         </>
     )

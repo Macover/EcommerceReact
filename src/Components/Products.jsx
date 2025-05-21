@@ -2,13 +2,12 @@ import React from "react"
 import './CSS/Products.css';
 import { ProductsHeader } from "./ProductsHeader";
 
-export function Products({ setFilter, listOfProducts }) {
+export function Products({ listOfProducts }) {
 
     return (
         <>
             <section>
                 <ProductsHeader
-                    setFilter={setFilter}
                     listOfProductsLength={listOfProducts.length}
                 />
                 <div className="products__container">
