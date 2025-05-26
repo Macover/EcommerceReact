@@ -4,7 +4,7 @@ section {
     gap: 20px;
 }
 
-.products__title{
+.products__title {
     text-align: center;
 }
 
@@ -20,11 +20,13 @@ section {
         grid-template-columns: 1fr;
     }
 }
+
 @media ((min-width: 600px) and (max-width: 899px)) {
     .products__container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media ((min-width: 900px) and (max-width: 1200px)) {
     .products__container {
         grid-template-columns: repeat(3, 1fr);
@@ -40,9 +42,19 @@ section {
     gap: 0;
 }
 
-.product__title {}
+.product__title {
+    font-size: 1rem;
+}
 
-.product__descriptiop {}
+.product__title:hover {
+    color: red;
+    font-size: 2rem;
+}
+
+
+.product__descriptiop {
+    color: red;
+}
 
 .product__brand {}
 

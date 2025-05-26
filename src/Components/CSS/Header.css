@@ -1,0 +1,13 @@
+.app__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 15px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+}
+
+.header__tile {
+    font-size: 4rem;
+}
+

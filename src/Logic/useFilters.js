@@ -24,9 +24,6 @@ export default function useFilters() {
         setFilteredProducts(filterProducts(listOfProducts))
     }, [filters, loading]);
 
-    console.log('filteredProducts', filterProducts(listOfProducts))
-
-    // filterProducts(listOfProducts)
 
     function filterProducts(products) {
 
@@ -36,10 +33,6 @@ export default function useFilters() {
                     filters.Category === 'All' ||
                     product.category === filters.Category
                 )
-            /* return (
-                filters.Category === 'All' ||
-                product.category === filters.Category
-            ) */
         })
 
     }
