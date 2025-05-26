@@ -29,7 +29,6 @@ export function ProductsHeader({ listOfProductsLength }) {
 
     return (
         <>
-            <h2 className="products__title">List of products</h2>
             <h3 className="products__title">number of products: {listOfProductsLength} </h3>
             <header>
                 <select onChange={(e) => handleCategoryInput(e)}>
