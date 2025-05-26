@@ -23,7 +23,6 @@ export function Products({ listOfProducts }) {
                                         <p className="product__category">Category: {product.category}</p>
                                         <p className="product__price">${product.price}</p>
                                         <img className="product__images" src={product.images[0]} />
-
                                     </div>
                                 )
                             })
