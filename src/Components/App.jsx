@@ -11,11 +11,13 @@ function App() {
 
     return (
         <main className='main'>
-            <Cart/>
-            <Header />
-            <Products
-                listOfProducts={loading ? [] : filteredProducts}
-            />
+            <section className='main__container'>
+                {/* <Cart /> */}
+                <Header />
+                <Products
+                    listOfProducts={loading ? [] : filteredProducts}
+                />
+            </section>
         </main>
     )
 }

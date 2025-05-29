@@ -17,12 +17,11 @@ export function Products({ listOfProducts }) {
                             : listOfProducts.map(product => {
                                 return (
                                     <div className="product__card" key={product.id}>
-                                        <span className="product__title">{product.title}</span>
-                                        <p className="product__descriptiop">{product.descriptiop}</p>
-                                        <p className="product__brand">{product.brand}</p>
-                                        <p className="product__category">Category: {product.category}</p>
-                                        <p className="product__price">${product.price}</p>
                                         <img className="product__images" src={product.images[0]} />
+                                        <span className="product__title">{product.title}</span>
+                                        <p className="product__price">${product.price}</p>
+                                        <p className="product__category">{product.category}</p>
+                                        <button>Add to cart</button>
                                     </div>
                                 )
                             })

@@ -1,10 +1,11 @@
 .app__header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0px 15px;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 300px);
+    position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .header__tile {

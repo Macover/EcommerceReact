@@ -1,13 +1,13 @@
 .cart__icon {
     position: absolute;
     right: 20px;
-    width: 30px;
+    width: 42px;
     height: max-content;
     padding: 5px;
     border-radius: 50%;
     cursor: pointer;
-    color: rgb(199, 12, 12);
-    background-color: rgb(208, 233, 17);
+    color: rgb(77, 77, 77);
+    background-color: rgb(214, 214, 214);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
     right: 20px;
     border: none;
     z-index: 5;
-    width: 27px;
+    width: 23px;
     height: 30px;
     border: 1px solid red;
     margin-right: 5px;
@@ -27,16 +27,18 @@
 
 .cart__aside {
     display: none;
+    top: 50px;
     right: 0;
     width: 25%;
     min-height: 30vh;
     position: absolute;
-    border: 1px solid black;
-    z-index: 1;
-    background-color: rgba(127, 255, 212, 0.562);
+    z-index: 2;
+    background-color: rgba(98, 98, 98, 0.562);
     transform: blur(20px);
+    border-radius: 8px;
+    box-shadow: #e9e8e7 14px 14px 31px;
 }
 
-.cart__input:checked ~ .cart__aside{
+.cart__input:checked~.cart__aside {
     display: block;
 }
