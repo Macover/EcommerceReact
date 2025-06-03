@@ -3,7 +3,6 @@ import { Products } from './Products';
 import useFilters from '../Logic/useFilters';
 import './CSS/App.css';
 import Header from './Header';
-import Cart from './Cart';
 
 function App() {
 
