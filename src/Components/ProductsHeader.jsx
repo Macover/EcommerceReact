@@ -30,23 +30,25 @@ export function ProductsHeader({ listOfProductsLength }) {
 
     return (
         <>
-            <h3 className="products__title">Number of products: {listOfProductsLength} </h3>
             <header className="products__header">
-                <div className="header__category-container">
-                    <label htmlFor={categoryId}>Filter by category:</label>
-                    <select className="category__input" id={categoryId} onChange={(e) => handleCategoryInput(e)}>
-                        <option value="All">All</option>
-                        <option value="beauty">beauty</option>
-                        <option value="groceries">groceries</option>
-                        <option value="furniture">furniture</option>
-                        <option value="fragrances">fragrances</option>
-                    </select>
+                <h1 className="products__title">Products: {listOfProductsLength}</h1>
+                <div className="products__filters-container">
+                    <div className="header__category-container">
+                        {/* <label htmlFor={categoryId}>Filter by category:</label> */}
+                        <select className="category__input" id={categoryId} onChange={(e) => handleCategoryInput(e)}>
+                            <option value="All">All</option>
+                            <option value="beauty">beauty</option>
+                            <option value="groceries">groceries</option>
+                            <option value="furniture">furniture</option>
+                            <option value="fragrances">fragrances</option>
+                        </select>
 
-                </div>
-                <div className="header__price-container">
-                    <input id={priceId} min={0} max={100} value={filters.Price}
-                        onChange={(e) => handlePriceInput(e)} type="range" />
-                    <label htmlFor={priceId}>Max price: ${filters.Price}</label>
+                    </div>
+                    <div className="header__price-container">
+                        <input className="header__price-max-input" id={priceId} min={0} max={100} value={filters.Price}
+                            onChange={(e) => handlePriceInput(e)} type="range" />
+                        <label htmlFor={priceId}>Max Price: ${filters.Price}</label>
+                    </div>
                 </div>
             </header>
         </>

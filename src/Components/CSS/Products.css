@@ -10,9 +10,9 @@ section {
 
 .products__container {
     display: grid;
-    gap: 15px;
-    grid-template-columns: repeat(4, 200px);
-    grid-auto-rows: 350px;
+    gap: 10px;
+    grid-template-columns: repeat(5, 270px);
+    /* grid-auto-rows: 350px; */
     justify-content: center;
 
 }
@@ -35,31 +35,3 @@ section {
     }
 }
 
-.product__card {
-    border: 2px solid grey;
-    background-color: #fff;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-around;
-    align-items: center;
-    gap: 0;
-    /* margin-bottom: 8px; */
-}
-
-.product__title {
-    font-size: 1rem;
-    font-weight: 800;
-    text-align: center;
-}
-
-.product__brand {}
-
-.product__price {
-    color: red;
-}
-
-.product__images {
-    width: 150px;
-    height: 150px;
-}

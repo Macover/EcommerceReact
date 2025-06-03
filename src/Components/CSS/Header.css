@@ -1,14 +1,30 @@
 .app__header {
+    border-bottom: 1px solid #e8eaee;
     display: flex;
     /* justify-content: space-between; */
-    padding: 0px 15px;
+    padding: 20px 30px;
     width: 100%;
     position: relative;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
 
 .header__tile {
-    font-size: 4rem;
+    color: hsl(212deg 40% 8%);
+    margin-right: auto;
+    font-size: 1.8rem;
+    font-weight: 500;
 }
 
+.header__search {
+    padding: 10px;
+    border: none;
+    background-color: hsl(215deg 42% 93%);
+    border-radius: 8px;
+    color: black;
+    margin-right: 50px;
+}
+
+.header__search:placeholder-shown {
+    color: hsl(210deg 31% 51%);
+}

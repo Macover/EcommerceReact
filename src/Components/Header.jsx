@@ -7,7 +7,8 @@ export default function Header() {
 
     return (
         <header className="app__header">
-            <h1 className="header__tile">Tiendita</h1>        
+            <h3 className="header__tile">Isaí</h3>        
+            <input className="header__search"  placeholder="🔍   Search" type="text" />
             <Cart />
         </header>
     )

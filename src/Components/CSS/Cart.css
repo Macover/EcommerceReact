@@ -4,10 +4,10 @@
     width: 42px;
     height: max-content;
     padding: 5px;
-    border-radius: 50%;
+    border-radius: 8px;
     cursor: pointer;
     color: rgb(77, 77, 77);
-    background-color: rgb(214, 214, 214);
+    background-color: hsl(215deg 42% 93%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,13 +27,13 @@
 
 .cart__aside {
     display: none;
-    top: 50px;
+    top: 60px;
     right: 0;
     width: 25%;
     min-height: 30vh;
     position: absolute;
     z-index: 2;
-    background-color: rgba(98, 98, 98, 0.562);
+    background-color: hsl(214, 44%, 93%);
     transform: blur(20px);
     border-radius: 8px;
     box-shadow: #e9e8e7 14px 14px 31px;
