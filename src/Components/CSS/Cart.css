@@ -29,11 +29,12 @@
     display: none;
     top: 60px;
     right: 0;
-    width: 25%;
+    min-width: 400px;
+    max-width: 800px;
     min-height: 30vh;
     position: absolute;
     z-index: 2;
-    background-color: hsl(214, 44%, 93%);
+    background-color: white;
     transform: blur(20px);
     border-radius: 8px;
     box-shadow: #e9e8e7 14px 14px 31px;
@@ -41,4 +42,102 @@
 
 .cart__input:checked~.cart__aside {
     display: block;
+}
+
+.cart__item {
+    /* border: 1px solid red; */
+    padding: 10px 20px;
+    display: flex;
+    /* grid-template-columns: 1fr 2fr 2fr; */
+    gap: 10px;
+}
+
+.item__img {
+    flex: 1fr;
+    width: 50px;
+    height: 50px;
+    background-color: bisque;
+    border-radius: 8px;
+}
+
+.item__details {
+    flex: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20px 20px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: start;
+    /* gap: 5px; */
+}
+
+.item__name {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-bottom: 5px;
+}
+
+.item__price {
+    color: hsl(209deg 30% 53%);
+}
+
+.item__actions-container button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.item__actions-container {
+    flex: 150px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.item__quantity {}
+
+.item__delete {
+    background: none;
+    color: red;
+}
+
+.item__decrease,
+.item__increase {
+    background-color: hsl(214deg 38% 93%);
+}
+
+.item__quantity {}
+
+
+.cart__checkout-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    padding: 10px 20px;
+    /* border:æ|« 1px solid red; */
+}
+
+.checkout-details__sub-total {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.checkout-details__items,
+.checkout-details__subtotal {
+    font-size: .9rem;
+    color: hsl(210deg 29% 60%);
+}
+
+.checkout-details__checkout-button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background-color: hsl(213deg 85% 54%);
+    color: white;
+    cursor: pointer;
 }
