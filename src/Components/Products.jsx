@@ -17,7 +17,7 @@ export function Products({ listOfProducts }) {
                             ? <div>There aren't any items</div>
                             : listOfProducts.map(product => {
                                 return (
-                                    <Product
+                                    <Product key={product.id}
                                         product={product}
                                     />
                                 )
