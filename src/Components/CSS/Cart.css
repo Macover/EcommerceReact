@@ -45,7 +45,7 @@
 }
 
 .cart__aside {
-    padding: 30px 0px;
+    padding-bottom: 30px;
     display: none;
     top: 60px;
     right: 0;
@@ -63,7 +63,8 @@
 }
 
 .cart__input:checked~.cart__aside {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .cart__item {
@@ -164,3 +165,19 @@
     color: white;
     cursor: pointer;
 }
+
+.checkout-details__clean-button {
+    align-self: flex-start;
+    width: max-content;
+    border-radius: 8px;
+    background-color: white;
+    color: red;
+    cursor: pointer;
+    text-align: end;
+    padding: 5px;
+    margin-left: 20px;
+    margin-top: 20px;
+    transition: all .5s;
+    border: none;
+}
+

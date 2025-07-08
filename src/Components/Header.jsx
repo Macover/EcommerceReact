@@ -7,7 +7,7 @@ export default function Header() {
 
     return (
         <header className="app__header">
-            <h3 className="header__tile">Isaí</h3>        
+            <h3 className="header__tile">Ecommerce</h3>        
             <input className="header__search"  placeholder="🔍   Search" type="text" />
             <Cart />
         </header>

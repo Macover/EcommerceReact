@@ -1,62 +1,16 @@
-import React, { useContext, useEffect, useId, useState } from "react";
+import React, { useContext, useId } from "react";
 import './CSS/Cart.css';
 import { CartIcon } from "./Icons";
-import { RemoveFromCartIcon } from "./Icons";
+import { RemoveFromCartIcon, ClearCartIcon } from "./Icons";
 import { CartContext } from "../Context/cartContext";
-
-
 
 export default function Cart() {
 
-    const { cart, setCart } = useContext(CartContext);
-    const [subTotal, setSubTotal] = useState(0);
+    const { state, subTotal, increaseQuantity, decreaseQuantity, removeItem, cleanCart } = useContext(CartContext);
+
+    const cart = state.elements;
+
     const cartId = useId();
-
-    useEffect(() => {
-
-        if (cart.length !== 0) {
-            const initialValue = 0;
-
-            const subTotal = cart.reduce((accumulator, currentValue) => accumulator + (currentValue.price * currentValue.quantity), initialValue);
-            setSubTotal(subTotal.toFixed(2));
-        }
-
-    }, [cart])
-
-    const handleOnClickDecrease = itemId => {
-
-        const updatedCart = cart.map(item => {
-            if (item.id === itemId) {
-                const newQuantity = item.quantity - 1;
-                if (newQuantity === 0) {
-                    return item;
-                }
-                return { ...item, quantity: newQuantity }
-            }
-            return item
-        });
-        setCart(updatedCart);
-    }
-
-    const handleOnClickIncrease = itemId => {
-
-        const updatedCart = cart.map(item => {
-            if (item.id === itemId) {
-                const newQuantity = item.quantity + 1;
-                return { ...item, quantity: newQuantity }
-            }
-            return item
-        });
-        setCart(updatedCart);
-    }
-
-    const handleRemoveItemFromCart = itemId => {
-
-        const index = cart.findIndex(item => item.id === itemId);
-        const updatedCart = cart.toSpliced(index, 1);
-        setCart(updatedCart);
-
-    }
 
     return (
         <>
@@ -72,26 +26,30 @@ export default function Cart() {
             <aside className="cart__aside">
 
 
+                {cart.length !== 0 ? <button className="checkout-details__clean-button" onClick={cleanCart}><ClearCartIcon /></button> : ''}
+
                 {
                     cart.length !== 0
                         ?
                         cart.map(item => {
                             return (
-                                <div className="cart__item" key={item.id}>
-                                    <img src={item.image} className="item__img" />
-                                    <div className="item__details">
-                                        <span className="item__name">{item.productName}</span>
-                                        <span className="item__price">${item.price}</span>
+                            
+                                    <div className="cart__item" key={item.id}>
+                                        <img src={item.image} className="item__img" />
+                                        <div className="item__details">
+                                            <span className="item__name">{item.productName}</span>
+                                            <span className="item__price">${item.price}</span>
+                                        </div>
+                                        <div className="item__actions-container">
+                                            <button onClick={() => decreaseQuantity(item)} className="item__decrease">-</button>
+                                            <span className="item__quantity">{item.quantity}</span>
+                                            <button onClick={() => increaseQuantity(item)} className="item__increase">+</button>
+                                            <button onClick={() => removeItem(item)} className="item__delete">
+                                                <RemoveFromCartIcon />
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="item__actions-container">
-                                        <button onClick={() => handleOnClickDecrease(item.id)} className="item__decrease">-</button>
-                                        <span className="item__quantity">{item.quantity}</span>
-                                        <button onClick={() => handleOnClickIncrease(item.id)} className="item__increase">+</button>
-                                        <button onClick={() => handleRemoveItemFromCart(item.id)} className="item__delete">
-                                            <RemoveFromCartIcon />
-                                        </button>
-                                    </div>
-                                </div>
+                          
                             )
                         })
                         :
