@@ -1,7 +1,5 @@
-export const cartInitialState = {
-    'elements': [],
-    'subTotal': 0
-};
+const initialState = {"elements": [], "subTotal": 0 };
+export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || initialState;
 
 export function cartReducer(state, action) {
 
@@ -13,6 +11,10 @@ export function cartReducer(state, action) {
     const calculateSubTotal = () => {
         const subTotal = newCart.elements.reduce((accumulator, currentValue) => accumulator + (currentValue.price * currentValue.quantity), 0);
         newCart[`subTotal`] = Number.parseFloat(subTotal).toFixed(2);
+    }
+
+    const updateLocalStorage = (newCart) => {
+        window.localStorage.setItem('cart', JSON.stringify(newCart))
     }
 
     switch (type) {
@@ -32,6 +34,7 @@ export function cartReducer(state, action) {
                 });
             }
             calculateSubTotal();
+            updateLocalStorage(newCart);
             return newCart;
 
         case 'INCREASE_QUANTITY_ITEM':
@@ -40,6 +43,7 @@ export function cartReducer(state, action) {
                 newCart.elements[indexCart].quantity += 1;
             }
             calculateSubTotal();
+            updateLocalStorage(newCart);
 
             return newCart;
 
@@ -51,6 +55,8 @@ export function cartReducer(state, action) {
                 }
             }
             calculateSubTotal();
+            updateLocalStorage(newCart);
+
 
             return newCart;
 
@@ -58,12 +64,15 @@ export function cartReducer(state, action) {
             const newElements = newCart.elements.filter(item => item.id !== payload.id);
             newCart[`elements`] = newElements;
             calculateSubTotal();
+            updateLocalStorage(newCart);
+
 
             return newCart;
 
 
-        case 'CLEAN__CART': return cartInitialState;
-
+        case 'CLEAN__CART':
+            updateLocalStorage(initialState);
+            return initialState;
     }
 
     return cartInitialState;
