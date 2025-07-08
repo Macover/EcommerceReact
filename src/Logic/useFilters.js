@@ -9,7 +9,7 @@ export default function useFilters() {
     const [listOfProducts, setListOfProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
-    const { filters, setFilter } = useContext(FiltersContext)
+    const { filters, setFilter, searchBox, setSearchBox } = useContext(FiltersContext)
 
     useEffect(() => {
         fetch(PRODUCTS_URL)
@@ -22,7 +22,7 @@ export default function useFilters() {
 
     useEffect(() => {
         setFilteredProducts(filterProducts(listOfProducts))
-    }, [filters, loading]);
+    }, [filters, loading, searchBox]);
 
 
     function filterProducts(products) {
@@ -33,9 +33,13 @@ export default function useFilters() {
                     filters.Category === 'All' ||
                     product.category === filters.Category
                 )
-        })
+                && (
+                     product.title.toLowerCase().includes(searchBox)
+                )
+
+        });
 
     }
 
-    return { loading, filteredProducts, setFilter }
+    return { loading, filteredProducts, setFilter, searchBox, setSearchBox }
 }

@@ -10,11 +10,15 @@ export const FiltersContextProvider = ({ children }) => {
         'Price': 10
     });
 
+    const [searchBox, setSearchBox] = useState('');
+
     return (
         <FiltersContext.Provider
             value={{
                 filters,
-                setFilter
+                setFilter,
+                searchBox,
+                setSearchBox
             }}
         >
             {children}

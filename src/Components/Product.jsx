@@ -15,7 +15,7 @@ const Product = ({ product }) => {
                 <span className="product__title">{product.title}</span>
                 <div className='product__sub-details'>
                     <p className="product__price">${product.price}</p>
-                    <p className="product__category"> · {product.category}</p>
+                    <p className="product__category">{product.category}</p>
                     <button onClick={() => addToCart(product)} className='product__button'>
                         <AddToCartIcon />
                     </button>
